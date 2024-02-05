@@ -51,13 +51,13 @@
                                 <!-- <span>Yu Zhao</span><sup>1</sup>,</span> -->
                                 <a href="https://scholar.google.com/citations?user=jeW8EcYAAAAJ&hl=en">Yu Zhao</a><sup>1</sup></span>
                             <span class="author-block">
-                                <a href="https://scofield7419.github.io">Hao Fei</a><sup>1</sup></span>
-
-                                
+                                <a href="https://scofield7419.github.io">Hao Fei</a><sup>2</sup></span>
                         </div>
 
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block"><sup>1</sup>Harbin Institute of Technology</span>
+                            <span class="author-block"><sup>1</sup>Tianjin University</span>
+                            <span class="author-block"><sup>2</sup>National University of Singapore</span>
+
                         </div>
 
                         <div class="column has-text-centered">
@@ -74,7 +74,7 @@
                                 </span>
                                 <!-- Paper Link. -->
                                 <span class="link-block">
-                                    <a href="https://arxiv.org/abs/2303.02635"
+                                    <a href="https://aclanthology.org/2022.emnlp-main.93/"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-file-pdf"></i>
@@ -125,12 +125,17 @@
         <div class="container is-max-desktop" style="max-width: 70%!important;">
             <div class="hero-body">
 
-                <img src="static/images/example4.svg" width="100%" alt="">
+                <!-- <img src="static/images/example4.svg" width="100%" alt=""> -->
+                <div style="text-align: center;">
+                    <img src="static/images/figure1.png" width="80%" alt="">
+                </div>
+                  
+
                 <h2 class="subtitle has-text-centered" style="text-align: left!important;">
-                    Figure 1: Example in our dataset with the question-answer pairs and their corresponding image and
-                    text. Different representations of the same object in text and image are identified with the same
-                    color. For example, ‘Elena’ in the text and the object bounding box corresponding to ‘Elena’ in the
-                    image are marked red.
+                    Figure 1: Example in our dataset with the object pairs and their corresponding image and text that can describe the 
+                    spatial relationships. Different representations of the same object in text and image are identified with the same color.
+                    The relationship is identified with the third different color only in the text. For example, ‘swan’ in the text and the object bounding 
+                    box corresponding to it in the image are marked green. The relationship is marked as orange.
                 </h2>
             </div>
         </div>
@@ -144,10 +149,10 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            xxxxxxx
+                            We propose the visual spatial description (VSD) challenge on the platform of ACM MM. This challenge falls within the research domain of visual spatial semantics understanding. In the VSD challenge, models and systems are expected to generate an accurate textual descriptive sentence of the spatial relationship between two given target visual objects in an input image. Alongside the challenge, a large-scale VSD dataset will be provided, consisting of 29,272 high-quality manually annotated image-text pairs. 
                         </p>
                         <p>
-                            xxxxxxx
+                            There are real images derived from Visual Genome  and SpatialSense dataset, containing a variety of entities. The annotators are required to extract the spatial relationship of the given two objects, and then generate a sentence to describe their spatial relation open-ended.
                         </p>
                     </div>
                 </div>
@@ -160,14 +165,22 @@
                     <h2 class="title is-3">Challenge Task</h2>
                     <div class="content has-text-justified">
                         <p>
-                            As illustrated in the Figure 1, given an image-text pair and a question, a system is
-                            required to answer the question by natural language. Importantly, the system needs to: (1)
-                            analyze the question and find out the key entities, (2) align the key entities between image
-                            and text, and (3) generate the answer according to the question and aligned entities. For
-                            example, in Figure 1, the key entity of Q1 is “Elena”. According to the text “gold hair”, we
-                            can determine that the second person from the right in the image is “Elena”. Finally, we
-                            further answer “suit” based on the image information. As for Q2, which is a more complex
-                            question, the previous steps need to be repeated several times to answer it.
+                            Task-1: Classification of Visual Spatial Relationship. Participants are required to construct models that can extract spatial relationships between two given objects O&#8321 and O&#8322 and output a triplet containing the spatial relationships of them. The relationships could be chosen from nine labels: “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”. The evaluation of this sub-task is the F1 score of the multi-label classification.
+                        </p>
+                        <p>
+                            Task-2: Description of Single Spatial Relationship.
+                            Participants are required to build models that generates a textual description of the single spatial relationship between the two objects O&#8321 and O&#8322.
+                            There are one or more ground-truth for each data entry.
+                            We calculate BLEU-4 and SPICE for the predicted sentence and each ground truth and choose the max score.
+                            We rank the submitted models by a weighted sum z of BLEU-4 and SPICE score:
+                                 <em>z = 0.4BLEU4 + 0.6SPICE</em> 
+                        <p>
+                            Task-3: Description of open-ended spatial relationship.
+                            In this task, we provide a more challenging dataset that contains more complex spatial description.
+                            Contestants are required to construct models that can generate textual description to describe the spatial relationship between O&#8321 and O&#8322. Different to task-2, in the task-3, the model should generate 3 diverse descriptions.
+                            The evaluation of task-3 contains two parts, the Correctness and the Diversity.
+                            For the correctness we use the same metrics as task-2.
+                            For the diversity, we use <em>mBLEU-4</em> and <em>SPICE5</em>.
                         </p>
                     </div>
                 </div>
