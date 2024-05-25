@@ -128,21 +128,19 @@
         </div>
     </section>
 
-    <section class="hero teaser">
+<!--     <section class="hero teaser">
         <div class="container is-max-desktop" style="max-width: 55%!important;">
             <div class="hero-body">
                 <div style="text-align: center;">
                     <img src="static/images/figure1.png" width="90%" alt="">
                 </div>
                 <h2 class="subtitle has-text-centered" style="text-align: left!important;">
-                    Figure 1: Example in our dataset with the object pairs and their corresponding image and text that can describe the 
-                    spatial relationships. Different representations of the same object in text and image are identified with the same color.
-                    The relationship is identified with the third different color only in the text. For example, ‘swan’ in the text and the object bounding 
-                    box corresponding to it in the image are marked green. The relationship is marked as orange.
+                    Example in our dataset with the object pairs and their corresponding image and text that can describe the 
+                    spatial relationships.
                 </h2>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="section"style="margin-top: -50px;">
         <div class="container is-max-desktop">
@@ -190,6 +188,25 @@
                     </div>
                 </div>
             </div>
+             <!-- Datasets. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Registration</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                             Our dataset comprises of two versions, VSDv1 and VSDv2, containing same images, two objects with bounding boxes, and spatial descriptions in English. The v2 contains more complicate sentences than v1.
+                        </p>
+                        <p>
+                            Example of a sample:
+                        </p>
+                        <pre id="jsonShow"></pre>
+                        <p>
+                            The datasets (with images) are avaliable on <a href="https://drive.google.com/drive/folders/1PkkokJvGDPTUNiQKhE0TTxh_AvxRKNqt?usp=drive_link"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
             <!-- / Paper video. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
@@ -222,5 +239,32 @@
     </footer>
 
 </body>
+<script>
+    jsonShowFn(json){
+        if (!json.match("^\{(.+:.+,*){1,}\}$")) {
+            return json           //判断是否是json数据，不是直接返回
+        }
 
+        if (typeof json != 'string') {
+            json = JSON.stringify(json, undefined, 2);
+        }
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+    $('#jsonShow').html(jsonShowFn('[{"imd_id":1,"triple_list":["s":"book","o":"table"]}]))
+</script>
 </html>
