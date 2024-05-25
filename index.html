@@ -79,12 +79,12 @@
                                 </span>
                                 <!-- Data Link. -->
                                 <span class="link-block">
-                                    <a href="https://github.com/LLLogen/VSDcode.git"
+                                    <a href="#dataset"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-images"></i>
                                         </span>
-                                        <span>Data</span>
+                                        <span>Dataset</span>
                                     </a>
                                 </span>
                                 <!-- Paper Link. -->
@@ -198,7 +198,7 @@
             </div>
              <!-- Datasets. -->
             <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
+                <div id="dataset" class="column is-four-fifths">
                     <h2 class="title is-3">Registration</h2>
                     <div class="content has-text-justified">
                         <p>
@@ -207,7 +207,21 @@
                         <p>
                             Example of a sample:
                         </p>
-                        <pre id="jsonShow"></pre>
+                        <pre id="jsonShow">[
+                            {
+                              "img_id": "1.jpg", // image id
+                              "triple_list": [
+                                {
+                                  "s": "book",                          // tag of the subject 
+                                  "o": "table",                         // tag of the object
+                                  "p": "on",                            // predicate label, one of “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”
+                                  "s_bbox": [xmin,ymin,xmax,ymax],      // coordinates of the subject box, with the 0 points at top left corner
+                                  "o_bbox": [110,110,50,50],            // coordinates of the object box
+                                }
+                              ],
+                              "description": "The book is on the table."
+                            }
+                          ]</pre>
                         <p>
                             The datasets (with images) are avaliable on <a href="https://drive.google.com/drive/folders/1PkkokJvGDPTUNiQKhE0TTxh_AvxRKNqt?usp=drive_link"></a>
                         </p>
@@ -248,31 +262,31 @@
 
 </body>
 <script>
-    function jsonShowFn(json){
-        if (!json.match("^\{(.+:.+,*){1,}\}$")) {
-            return json           //判断是否是json数据，不是直接返回
-        }
+    // function jsonShowFn(json){
+    //     if (!json.match("^\{(.+:.+,*){1,}\}$")) {
+    //         return json           //判断是否是json数据，不是直接返回
+    //     }
 
-        if (typeof json != 'string') {
-            json = JSON.stringify(json, undefined, 2);
-        }
-        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
-            var cls = 'number';
-            if (/^"/.test(match)) {
-                if (/:$/.test(match)) {
-                    cls = 'key';
-                } else {
-                    cls = 'string';
-                }
-            } else if (/true|false/.test(match)) {
-                cls = 'boolean';
-            } else if (/null/.test(match)) {
-                cls = 'null';
-            }
-            return '<span class="' + cls + '">' + match + '</span>';
-        });
-    }
-    $('#jsonShow').html(jsonShowFn('[{"imd_id":1,"triple_list":["s":"book","o":"table"]}]'));
+    //     if (typeof json != 'string') {
+    //         json = JSON.stringify(json, undefined, 2);
+    //     }
+    //     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    //     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+    //         var cls = 'number';
+    //         if (/^"/.test(match)) {
+    //             if (/:$/.test(match)) {
+    //                 cls = 'key';
+    //             } else {
+    //                 cls = 'string';
+    //             }
+    //         } else if (/true|false/.test(match)) {
+    //             cls = 'boolean';
+    //         } else if (/null/.test(match)) {
+    //             cls = 'null';
+    //         }
+    //         return '<span class="' + cls + '">' + match + '</span>';
+    //     });
+    // }
+    // $('#jsonShow').html(jsonShowFn('[{"imd_id":1,"triple_list":["s":"book","o":"table"]}]'));
 </script>
 </html>
