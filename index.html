@@ -36,6 +36,14 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <!--  <script src="./static/js/index.js"></script>-->
+    <style>
+        pre {outline: 1px solid #ccc; }
+         .string { color: green; }
+         .number { color: darkorange; }
+         .boolean { color: blue; }
+         .null { color: magenta; }
+         .key { color: red; }
+    </style>
 </head>
 
 <body>
@@ -240,7 +248,7 @@
 
 </body>
 <script>
-    jsonShowFn(json){
+    function jsonShowFn(json){
         if (!json.match("^\{(.+:.+,*){1,}\}$")) {
             return json           //判断是否是json数据，不是直接返回
         }
@@ -265,6 +273,6 @@
             return '<span class="' + cls + '">' + match + '</span>';
         });
     }
-    $('#jsonShow').html(jsonShowFn('[{"imd_id":1,"triple_list":["s":"book","o":"table"]}]))
+    $('#jsonShow').html(jsonShowFn('[{"imd_id":1,"triple_list":["s":"book","o":"table"]}]'));
 </script>
 </html>
