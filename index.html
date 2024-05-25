@@ -81,49 +81,34 @@
                                 <span class="link-block">
                                     <a href="#dataset"
                                         class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-images"></i>
-                                        </span>
                                         <span>Dataset</span>
                                     </a>
                                 </span>
                                 <!-- Paper Link. -->
                                 <span class="link-block">
-                                    <a href="https://aclanthology.org/2022.emnlp-main.93/"
+                                    <a href="#task"
                                         class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </span>
-                                        <span>Paper</span>
+                                        <span>Task</span>
                                     </a>
                                 </span>
                                 <!-- Code Link. -->
                                 <span class="link-block">
-                                    <a href="https://github.com/LLLogen/VSDcode.git"
+                                    <a href="#submission"
                                         class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-code"></i>
-                                        </span>
-                                        <span>Code</span>
+                                        <span>Submission</span>
                                     </a>
                                 </span>
                                 <!-- Demo Link. -->
 <!--                                 <span class="link-block">
-                                    <a href="https://github.com/LLLogen/VSDcode.git"
+                                    <a href="#baseline"
                                         class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-file-code"></i>
-                                        </span>
-                                        <span>Demo</span>
+                                        <span>Baseline</span>
                                     </a>
                                 </span> -->
                                 <!-- Participate Link. -->
                                 <span class="link-block">
                                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuKXhaN5qa61rWlwaE3VpJD5FHcVLH25Un95wch6fCKiXIGQ/viewform?usp=sf_link"
                                         class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-user"></i>
-                                        </span>
                                         <span>Participate</span>
                                     </a>
                                 </span>
@@ -174,32 +159,44 @@
                     <h2 class="title is-3">Challenge Task Definition and Metrtics</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Task-1: Classification of Visual Spatial Relationship. Participants are required to construct models that can extract spatial relationships between two given objects O&#8321 and O&#8322 and output a triplet containing the spatial relationships of them. The relationships could be chosen from nine labels: “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”. The evaluation of this sub-task is the F1 score of the multi-label classification.
+                            <b>Task-1:</b> Classification of Visual Spatial Relationship. Participants are required to construct models that can extract spatial relationships between two given objects O&#8321 and O&#8322 and output a triplet containing the spatial relationships of them. The relationships could be chosen from nine labels: “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”. The evaluation of this sub-task is the F1 score of the multi-label classification.
                         </p>
+                         <p>
+                                 <b><em>z<sub>1</sub> = F1</em></b>
                         <p>
-                            Task-2: Description of Single Spatial Relationship.
+                        <p>
+                            <b>Task-2:</b> Description of Single Spatial Relationship.
                             Participants are required to build models that generates a textual description of the single spatial relationship between the two objects O&#8321 and O&#8322.
                             There are one or more ground-truth for each data entry.
                             We calculate BLEU-4 and SPICE for the predicted sentence and each ground truth and choose the max score.
                             We rank the submitted models by a weighted sum z of BLEU-4 and SPICE score:
                          <p>
                         <p>
-                                 <b><em>z = 0.4BLEU4 + 0.6SPICE</em></b>
+                                 <b><em>z<sub>2</sub> = 0.4BLEU4 + 0.6SPICE</em></b>
                         <p>
-                            Task-3: Description of open-ended spatial relationship.
+                            <b>ask-3:</b> Description of open-ended spatial relationship.
                             In this task, we provide a more challenging dataset that contains more complex spatial description.
                             Contestants are required to construct models that can generate textual description to describe the spatial relationship between O&#8321 and O&#8322. Different to task-2, in the task-3, the model should generate 3 diverse descriptions.
                             The evaluation of task-3 contains two parts, the Correctness and the Diversity.
                             For the correctness we use the same metrics as task-2.
                             For the diversity, we use <em>mBLEU-4</em> and <em>SPICE5</em>.
                         </p>
+                        <p>
+                                 <b><em>z<sub>3</sub> = 0.5BLEU4 + 0.5SPICE</em></b>
+                        <p>
+                        <p>
+                           Finally, we use the following score for ranking:
+                        </p>
+                        <p>
+                                 <b><em>0.2z<sub>1</sub>+0.3>z<sub>2</sub>+0.5>z<sub>3</sub></em></b>
+                        <p>
                     </div>
                 </div>
             </div>
              <!-- Datasets. -->
             <div class="columns is-centered has-text-centered">
                 <div id="dataset" class="column is-four-fifths">
-                    <h2 class="title is-3">Registration</h2>
+                    <h2 class="title is-3">Dataset</h2>
                     <div class="content has-text-justified">
                         <p>
                              Our dataset comprises of two versions, VSDv1 and VSDv2, containing same images, two objects with bounding boxes, and spatial descriptions in English. The v2 contains more complicate sentences than v1.
@@ -215,15 +212,30 @@
       "s": "book",                          // tag of the subject 
       "o": "table",                         // tag of the object
       "p": "on",                            // predicate label, one of “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”
-      "s_bbox": [xmin,ymin,xmax,ymax],      // coordinates of the subject box, with the 0 points at top left corner
-      "o_bbox": [110,110,50,50],            // coordinates of the object box
+      "s_bbox": [ymin,ymax,xmin,xmax],      // coordinates of the subject box, with the 0 points at upper-left corner of the image. (xmin, ymin) is the upper-left corner of the box.
+      "o_bbox": ymin,ymax,xmin,xmax],            // coordinates of the object box
     }
   ],
   "description": "The book is on the table."
 }
 ]</pre>
                         <p>
-                            The datasets (with images) are avaliable on <a href="https://drive.google.com/drive/folders/1PkkokJvGDPTUNiQKhE0TTxh_AvxRKNqt?usp=drive_link"></a>
+                            The datasets (with images) are avaliable on <a href="https://drive.google.com/drive/folders/1PkkokJvGDPTUNiQKhE0TTxh_AvxRKNqt?usp=drive_link">Google Drive</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- / Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div id="submission" class="column is-four-fifths">
+                    <h2 class="title is-3">Submission</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                             Welcome and please apply for the VSD challenge via a form at <a herf="https://docs.google.com/forms/d/e/1FAIpQLSfuKXhaN5qa61rWlwaE3VpJD5FHcVLH25Un95wch6fCKiXIGQ/viewform?usp=sf_link">this link</a>.
+                        </p>
+                        <p>
+                            Feel free to contact us at <a href="mailto: vsdchallenge@gmail.com">vsdchallenge@gmail.com</a>.
                         </p>
                     </div>
                 </div>
