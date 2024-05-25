@@ -64,6 +64,13 @@
                             <div class="publication-links">
                                 <!-- Data Link. -->
                                 <span class="link-block">
+                                    <a href="#introduction"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span>Introduction</span>
+                                    </a>
+                                </span>
+                                <!-- Data Link. -->
+                                <span class="link-block">
                                     <a href="https://github.com/LLLogen/VSDcode.git"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
@@ -140,15 +147,15 @@
     <section class="section"style="margin-top: -50px;">
         <div class="container is-max-desktop">
             <!-- Abstract. -->
-            <div class="columns is-centered has-text-centered">
+            <div id="introduction" class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3">Abstract</h2>
+                    <h2 class="title is-3">Introduction</h2>
                     <div class="content has-text-justified">
                         <p>
                             We propose the visual spatial description (Visual Spatial Description) challenge on the platform of ACM MM. This challenge falls within the research domain of visual spatial semantics understanding. In the Visual Spatial Description challenge, models and systems are expected to generate an accurate textual descriptive sentence of the spatial relationship between two given target visual objects in an input image. Alongside the challenge, a large-scale Visual Spatial Description dataset will be provided, consisting of 29,272 high-quality manually annotated image-text pairs. 
                         </p>
                         <p>
-                            There are real images derived from Visual Genome  and SpatialSense dataset, containing a variety of entities. The annotators are required to extract the spatial relationship of the given two objects, and then generate a sentence to describe their spatial relation open-ended.
+                            The challenge contains three subtasks, from easy to hard. The participators are required to extract the spatial relationship of the given two objects, and then generate diversified sentences to describe their spatial relation.
                         </p>
                     </div>
                 </div>
@@ -158,7 +165,7 @@
             <!-- Paper video. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3">Challenge Task</h2>
+                    <h2 class="title is-3">Challenge Task Definition and Metrtics</h2>
                     <div class="content has-text-justified">
                         <p>
                             Task-1: Classification of Visual Spatial Relationship. Participants are required to construct models that can extract spatial relationships between two given objects O&#8321 and O&#8322 and output a triplet containing the spatial relationships of them. The relationships could be chosen from nine labels: “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”. The evaluation of this sub-task is the F1 score of the multi-label classification.
@@ -169,7 +176,9 @@
                             There are one or more ground-truth for each data entry.
                             We calculate BLEU-4 and SPICE for the predicted sentence and each ground truth and choose the max score.
                             We rank the submitted models by a weighted sum z of BLEU-4 and SPICE score:
-                                 <em>z = 0.4BLEU4 + 0.6SPICE</em> 
+                         <p>
+                        <p>
+                                 <b><em>z = 0.4BLEU4 + 0.6SPICE</em></b>
                         <p>
                             Task-3: Description of open-ended spatial relationship.
                             In this task, we provide a more challenging dataset that contains more complex spatial description.
