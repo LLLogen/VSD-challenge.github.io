@@ -182,7 +182,7 @@
                             For the diversity, we use <em>mBLEU-4</em> and <em>SPICE5</em>.
                         </p>
                         <p>
-                                 <b><em>z<sub>3</sub> = 0.5BLEU4 + 0.5SPICE</em></b>
+                                 <b><em>z<sub>3</sub> = 0.5mBLEU4 + 0.5SPICE</em></b>
                         <p>
                         <p>
                            Finally, we use the following score for ranking:
@@ -236,6 +236,33 @@
                              Please sumbit predicted results with a json file for EACH task.
                              Files are submitted through Codalab.
                         </p>
+                        <p>
+                            For task1 and task2, the submiited json like:
+                        </p>
+                        <pre id="jsonShow">[
+{
+    "img_id": "1.jpg", // image id
+    "triple_list": [
+    {
+        "s": "book",                          // tag of the subject 
+        "o": "table",                         // tag of the object
+        <span style="color: #ff0000;">"p": "predicted label"</span>,                            // predicate label, one of “on”, “in”, “next”, “under”, “above”, “behind”, “in front of”, “left”, and “right”
+        "s_bbox": [ymin,ymax,xmin,xmax],      // coordinates of the subject box, with the 0 points at upper-left corner of the image. (xmin, ymin) is the upper-left corner of the box.
+        "o_bbox": ymin,ymax,xmin,xmax],       // coordinates of the object box
+    }
+    ],
+    <span style="color: #ff0000;">"description": ["sentence1"]</span> // generated sentences
+}
+]</pre>
+                        <p>
+                            For task3, the submiited json like:
+                        </p>
+                        <pre id="jsonShow">[
+{
+    "img_id": "1.jpg", // image id
+    <span style="color: #ff0000;">"description": ["sentence1", "sentence2", "sentence3"]</span> // generated sentences
+}
+]</pre>
                         <p>
                             Link to <a href="#">Codalab</a>
                         </p>
