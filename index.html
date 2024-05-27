@@ -143,10 +143,10 @@
                     <h2 class="title is-3">Introduction</h2>
                     <div class="content has-text-justified">
                         <p>
-                            We propose the visual spatial description (Visual Spatial Description) challenge on the platform of ACM MM. This challenge falls within the research domain of visual spatial semantics understanding. In the Visual Spatial Description challenge, models and systems are expected to generate an accurate textual descriptive sentence of the spatial relationship between two given target visual objects in an input image. Alongside the challenge, a large-scale Visual Spatial Description dataset will be provided, consisting of 29,272 high-quality manually annotated image-text pairs. 
+                            We propose the visual spatial description (VSD) challenge on the platform of ACM MM. This challenge falls within the research domain of visual spatial semantics understanding. In the VSD challenge, models and systems are expected to generate an accurate textual descriptive sentence to describe the spatial relationship between two given target objects in an input image. Alongside the challenge, a large-scale Visual Spatial Description dataset will be provided, consisting of 29,272 high-quality manually annotated image-text pairs. 
                         </p>
                         <p>
-                            The challenge contains three subtasks, from easy to hard. The participants are required to extract the spatial relationship of the given two objects, and then generate diversified sentences to describe their spatial relation.
+                            The challenge contains three subtasks, from easy to hard.
                         </p>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                         <p>
                         <p>
                             <b>Task-2:</b> Description of Single Spatial Relationship.
-                            Participants are required to build models that generates a textual description of the single spatial relationship between the two objects O&#8321 and O&#8322.
+                            Participants are required to build models that generate a textual description of the single spatial relationship between the two objects O&#8321 and O&#8322.
                             There are one or more ground-truth for each data entry.
                             We calculate BLEU-4 and SPICE for the predicted sentence and each ground truth and choose the max score.
                             We rank the submitted models by a weighted sum z of BLEU-4 and SPICE score:
@@ -182,13 +182,13 @@
                             For the diversity, we use <em>mBLEU-4</em> and <em>SPICE5</em>.
                         </p>
                         <p>
-                                 <b><em>z<sub>3</sub> = 0.5mBLEU4 + 0.5SPICE</em></b>
+                                 <b><em>z<sub>3</sub> = 0.5*(50 - mBLEU4) + 0.5SPICE</em></b>
                         <p>
                         <p>
                            Finally, we use the following score for ranking:
                         </p>
                         <p>
-                                 <b><em>0.2z<sub>1</sub>+0.3z<sub>2</sub>+0.5z<sub>3</sub></em></b>
+                                 <b>z=<em>0.2z<sub>1</sub>+0.3z<sub>2</sub>+0.5z<sub>3</sub></em></b>
                         <p>
                             We provide python scripts for evaluation, please refer to the <a href="#baseline">baseline codes</a>.
                     </div>
