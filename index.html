@@ -43,6 +43,11 @@
          .boolean { color: blue; }
          .null { color: magenta; }
          .key { color: red; }
+        ._table{width: 100%; border-collapse: collapse; border:0px;}
+        ._table thead tr {font-size: 13px; color: #2e3b45;  text-align: center; background-color: rgba(230, 255, 250, 0.92); font-weight:bold;}
+        ._table td{line-height: 20px; text-align: center; padding: 4px 10px 3px 10px; height: 18px;border: 0px solid #ffffff;}
+        ._table tbody tr {background: #fff; font-size: 13px; color: #393939;}
+        ._table tbody tr:nth-child(2n){ background: #f3f3f3;}
     </style>
 </head>
 
@@ -317,6 +322,36 @@
                 </div>
             </div>
 
+            <!-- / Paper video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Timeline</h2>
+                    <div class="content has-text-justified">
+                        <table class="._table table-bordered table-striped" align="center">
+                            <tbody align="center" valign="center">
+                            <tr>
+                              <td>Registration open</td>
+                              <td>May 24, 2024</td>
+                            </tr>
+                            <tr>
+                              <td>Release of all datasets</td>
+                              <td>MAy 28, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Evaluation results and ranking open</td>
+                                <td>June 10, 2024</td>
+                            </tr>
+                            <tr>
+                                <td>System reports and conference paper deadline</td>
+                                <td>July 12, 2024</td>
+                            </tr>
+
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Rewards</h2>
